@@ -1,0 +1,158 @@
+main {
+  max-width: 320px;
+  margin: 0 auto;
+}
+@font-face {
+  font-family: 'Star Jedi Rounded';
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/41589/Starjedi.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@keyframes timer {
+  0% { width: 0% }
+
+  100% { width: 100% }
+}
+
+@-webkit-keyframes timer {
+  0% { width: 0% }
+
+  100% { width: 100% }
+}
+
+@keyframes scroll {
+	0% { top: 70%; }
+	100% { top: -170%; }
+}
+
+@-webkit-keyframes scroll {
+	0% { top: 70%; }
+	100% { top: -170%; }
+}
+
+
+.holder {
+  width: 100%;
+  background: #4D4D4D;
+  height: 1em;
+}
+
+$timerlength: 10s;
+$green: #91E54E;
+#timer {
+  background: $green;
+  height: 1em;
+  width: 0%;
+  max-width: 100%;
+  float: left;
+  animation: timer $timerlength 1 forwards;
+  -webkit-animation: timer $timerlength 1 forwards;
+  animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Star Jedi Rounded', sans-serif;
+  //color: #FFE81F;
+  color: white;
+}
+
+body {
+  background: black;
+  color: white;
+  text-align: center;
+  font-family: 'Star Jedi Rounded';
+}
+
+h1 {
+  font-weight: normal;
+  &.question {
+    //margin: 3em auto;
+    margin-top: 4em;
+    margin: 0;
+    height: 100%;
+    line-height: 14rem;
+  }
+}
+
+button {
+  -webkit-display: none;
+  padding: 0.5rem;
+  width: 100%;
+  display: block;
+  font-size: 1em;
+  margin: 1em auto;
+  color: black;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  
+  &:focus {
+    outline: none;
+  }
+  
+  &.starwars {
+    background: #FFE81F;
+  }
+  &.food {
+    background: #00FFFF;
+  }
+  &.baseball {
+    background: #FF00FF;
+  }
+}
+
+.scores {
+  font-weight: 200;
+  .overall {
+    float: left;
+    color: $green;
+  }
+  .streak {
+    float: right;
+    color: $green;
+  }
+}
+
+$questionscrolltime: 8s;
+
+.question-holder {
+  position: relative;
+  height: 14rem;
+  overflow: hidden;
+  &.starwars {
+      position: relative;
+      width: 20rem;
+      left: 50%;
+      margin-left: -10rem;
+      text-align: center;
+      -webkit-transform-origin: 50% 100%;
+      -moz-transform-origin: 50% 100%;
+      transform-origin: 50% 100%;
+      -webkit-transform: perspective(300px) rotateX(25deg);
+      -moz-transform: perspective(300px) rotateX(25deg);
+      transform: perspective(300px) rotateX(25deg);
+    &:after {
+      position: absolute;
+      content: ' ';
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 60%;
+      background-image: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
+    }
+    .question {
+      color: yellow;
+      position: relative;
+      top: 100%;
+      -webkit-animation: scroll $questionscrolltime linear 0s infinite;
+    }
+  }
+}
+
+.wrong {
+  color: red;
+}
+
